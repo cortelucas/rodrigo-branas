@@ -7,51 +7,87 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Hello World | Home</title>
   <script>
-    //janeiro
-    let salarioJaneiro = 3000
-    let aluguelJaneiro = 1000
-    let contaDeAguaJaneiro = 200
-    let contaDeLuzJaneiro = 100
-    let internetJaneiro = 100
-    let transporteJaneiro = 300
-    let lazerJaneiro = 300
-    let alimentacaoJaneiro = 500
 
-    let saldoJaneiro = salarioJaneiro - aluguelJaneiro - contaDeAguaJaneiro - contaDeLuzJaneiro - internetJaneiro - transporteJaneiro - lazerJaneiro - alimentacaoJaneiro
-    console.log(`Janeiro - ${saldoJaneiro}`)
-
-    if (saldoJaneiro < 0) {
-      console.log(`Saldo de Janeiro -> ${saldoJaneiro * 0.1}`)
-    } else {
-      console.log(`Rendimento de Janeiro -> ${saldoJaneiro * 0.005}`)
+    function roundValue(value) {
+      return Math.round(value * 100) / 100
     }
+
+    function calculateInterest(value) {
+      const interest = roundValue(value * 0.1)
+
+      return interest
+    }
+
+    function calculateIncome(value) {
+      const income = roundValue(value * 0.005)
+
+      return income
+    }
+
+    function calculateBalance(mount, previousBalance, salary, rent, waterBill, electricityBill, internet, transport, leisure, food) {
+      console.log(mount)
+      let balance = (previousBalance + salary) - rent - waterBill - electricityBill - internet - transport - leisure - food
+
+      if (balance < 0) {
+        const interest = calculateInterest(balance)
+        balance = roundValue(balance + interest)
+      } else {
+        const income = calculateIncome(balance)
+        balance = roundValue(balance + income)
+      }
+
+      return balance
+    }
+
+    //janeiro
+    const salaryJanuary = 3000
+    const rentJanuary = 1000
+    const waterBillJanuary = 200
+    const electricityBillJanuary = 100
+    const internetJanuary = 100
+    const transportJanuary = 300
+    const leisureJanuary = 300
+    const foodJanuary = 500
+
+    const balanceJanuary = calculateBalance("Janeiro", 0, salaryJanuary, rentJanuary, waterBillJanuary, electricityBillJanuary, internetJanuary, transportJanuary, leisureJanuary, foodJanuary)
+
+    console.log(balanceJanuary)
 
     //fevereiro
-    let salarioFevereiro = 3000
-    let aluguelFevereiro = 1200
-    let contaDeAguaFevereiro = 250
-    let contaDeLuzFevereiro = 100
-    let internetFevereiro = 100
-    let transporteFevereiro = 500
-    let lazerFevereiro = 0
-    let alimentacaoFevereiro = 1000
+    const salaryFebruary = 3000
+    const rentFebruary = 1200
+    const waterBillFebruary = 250
+    const electricityBillFebruary = 100
+    const internetFebruary = 100
+    const transportFebruary = 500
+    const leisureFebruary = 0
+    const foodFebruary = 1000
 
-    let saldoFevereiro = salarioFevereiro - aluguelFevereiro - contaDeAguaFevereiro - contaDeLuzFevereiro - internetFevereiro - transporteFevereiro - lazerFevereiro - alimentacaoFevereiro
-    console.log(`Fevereiro - ${saldoFevereiro}`)
+    const balanceFebruary = calculateBalance("Fevereiro", balanceJanuary, salaryFebruary, rentFebruary, waterBillFebruary, electricityBillFebruary, internetFebruary, transportFebruary, leisureFebruary, foodFebruary)
 
-    if (saldoFevereiro < 0) {
-      console.log(`Saldo de Fevereiro -> ${saldoFevereiro * 0.1}`)
-    } else {
-      console.log(`Rendimentos de Fevereiro -> ${saldoFevereiro * 0.005}`)
-    }
+    console.log(balanceFebruary)
+
+    //fevereiro
+    const salaryMarch = 4000
+    const rentMarch = 1200
+    const waterBillMarch = 200
+    const electricityBillMarch = 100
+    const internetMarch = 200
+    const transportMarch = 500
+    const leisureMarch = 800
+    const foodMarch = 1000
+
+    const balanceMarch = calculateBalance("Março", balanceJanuary, salaryMarch, rentMarch, waterBillMarch, electricityBillMarch, internetMarch, transportMarch, leisureMarch, foodMarch)
+
+    console.log(balanceMarch)
 
     //acumulado do ano
-    let saldoAno = saldoJaneiro + saldoFevereiro
-    console.log(`Ano - ${saldoAno}`)
-    if (saldoAno < 0) {
-      console.log(`Saldo de Ano -> ${saldoAno * 0.1}`)
+    const balanceYear = balanceJanuary + balanceFebruary + balanceMarch
+    console.log(`Ano - ${balanceYear}`)
+    if (balanceYear < 0) {
+      console.log(`Saldo de Ano -> ${calculateInterest(balanceYear)}`)
     } else {
-      console.log(`Rendimentos do Ano -> ${saldoAno * 0.005}`)
+      console.log(`Rendimentos do Ano -> ${calculateIncome(balanceYear)}`)
     }
   </script>
 </head>

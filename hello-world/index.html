@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="pt_BR">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hello World | Home</title>
+  <script>
+    //janeiro
+    let salarioJaneiro = 3000
+    let aluguelJaneiro = 1000
+    let contaDeAguaJaneiro = 200
+    let contaDeLuzJaneiro = 100
+    let internetJaneiro = 100
+    let transporteJaneiro = 300
+    let lazerJaneiro = 300
+    let alimentacaoJaneiro = 500
+
+    let saldoJaneiro = salarioJaneiro - aluguelJaneiro - contaDeAguaJaneiro - contaDeLuzJaneiro - internetJaneiro - transporteJaneiro - lazerJaneiro - alimentacaoJaneiro
+    console.log(`Janeiro - ${saldoJaneiro}`)
+
+    if (saldoJaneiro < 0) {
+      console.log(`Saldo de Janeiro -> ${saldoJaneiro * 0.1}`)
+    } else {
+      console.log(`Rendimento de Janeiro -> ${saldoJaneiro * 0.005}`)
+    }
+
+    //fevereiro
+    let salarioFevereiro = 3000
+    let aluguelFevereiro = 1200
+    let contaDeAguaFevereiro = 250
+    let contaDeLuzFevereiro = 100
+    let internetFevereiro = 100
+    let transporteFevereiro = 500
+    let lazerFevereiro = 0
+    let alimentacaoFevereiro = 1000
+
+    let saldoFevereiro = salarioFevereiro - aluguelFevereiro - contaDeAguaFevereiro - contaDeLuzFevereiro - internetFevereiro - transporteFevereiro - lazerFevereiro - alimentacaoFevereiro
+    console.log(`Fevereiro - ${saldoFevereiro}`)
+
+    if (saldoFevereiro < 0) {
+      console.log(`Saldo de Fevereiro -> ${saldoFevereiro * 0.1}`)
+    } else {
+      console.log(`Rendimentos de Fevereiro -> ${saldoFevereiro * 0.005}`)
+    }
+
+    //acumulado do ano
+    let saldoAno = saldoJaneiro + saldoFevereiro
+    console.log(`Ano - ${saldoAno}`)
+    if (saldoAno < 0) {
+      console.log(`Saldo de Ano -> ${saldoAno * 0.1}`)
+    } else {
+      console.log(`Rendimentos do Ano -> ${saldoAno * 0.005}`)
+    }
+  </script>
+</head>
+
+<body>
+
+</body>
+
+</html>
